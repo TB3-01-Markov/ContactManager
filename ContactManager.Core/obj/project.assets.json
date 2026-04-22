@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\mygit\\ContactManager.Core\\ContactManager.Core.csproj",
+      "projectUniqueName": "C:\\mygit\\ContactManager\\ContactManager.Core\\ContactManager.Core.csproj",
       "projectName": "ContactManager.Core",
-      "projectPath": "C:\\mygit\\ContactManager.Core\\ContactManager.Core.csproj",
+      "projectPath": "C:\\mygit\\ContactManager\\ContactManager.Core\\ContactManager.Core.csproj",
       "packagesPath": "C:\\Users\\becode\\.nuget\\packages\\",
-      "outputPath": "C:\\mygit\\ContactManager.Core\\obj\\",
+      "outputPath": "C:\\mygit\\ContactManager\\ContactManager.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
