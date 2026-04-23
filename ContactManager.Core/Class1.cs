@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ContactManager.Core
 {
@@ -12,9 +13,34 @@ namespace ContactManager.Core
         public void Write(string message);
         public string ReadLine();
     }
+    /*
+    public interface IContactRepository
+    {
 
+        private readonly OrderRepository repository;
 
+        public OrderService(OrderRepository repository)
+        {
+            this.repository = repository;
+        }
 
+        public void Add(Order order)
+        {
+            repository.Add(order);
+        }
+        public void Add(Order order)
+        {
+            using var connection = new SqlConnection("...");
+            // SQL insert
+        }
+        Add(entity);
+        GetAll()
+        GetById(id)
+        Update(entity)
+        Delete(id)
+    }
+
+    */
     /*
     public class Class1
     {
@@ -103,7 +129,7 @@ namespace ContactManager.Core
                     {
                         if (p.Length > 2 && p.Length < 20)
                         {
-                            foreach(char c in p)
+                            foreach(char  c in p)
                             {
                                 if(!char.IsDigit(c)||c!='+'||c!=' '|| c!='(' || c!=')')
                                 {
@@ -145,6 +171,7 @@ namespace ContactManager.Core
                 }
         */
     }
+   
     public class InMemoryContactRepository
     {
         private List<Contact> contactenList = new List<Contact>();
@@ -156,10 +183,42 @@ namespace ContactManager.Core
             nextId = nextId + 1;
             contactenList.Add(contact);
         }
-
+        public void Delete(Contact contact)
+        {
+            
+            contactenList.Remove(contact);
+        }
+        public void Update(Contact contact)
+        {
+            var existing =  GetById(contact.Id);
+                existing.Name = contact.Name;
+                existing.Phone = contact.Phone;
+                existing.Email = contact.Email;
+        }
         public IReadOnlyList<Contact> GetAll()
         {
             return contactenList;
+        }
+        public Contact GetById(int id)
+        {
+            foreach (var c in contactenList)
+            {
+                if (c.Id == id) return c;
+            }
+            throw new Exception("Contact not found");
+        }
+        public List<Contact> GetByName(string name)
+        {
+            List<Contact> cList = new List<Contact>();
+            foreach (var c in contactenList)
+            {
+                if (c.Name.Contains(name) == true)
+                {
+                    cList.Add(c);
+                }
+            }
+            return cList;
+            throw new Exception("Contact not found");
         }
     }
     /*
@@ -203,6 +262,61 @@ namespace ContactManager.Core
         {
             return repository.GetAll().ToList();
         }
+        public void Update(Contact contact){
+            if (repository.GetById(contact.Id) != null)
+            { 
+                repository.Update(contact);
+            }
+            else
+            {
+                Console.WriteLine($"Contact met Id={contact.Id}  niet gevonden");
+            }
+            
+        }
+        public void ZoekenOpNaam(string naam)
+        {
+            List<Contact> ConOpNamen = repository.GetByName(naam);
+            foreach (var con in ConOpNamen)
+            {
+                PrintContact(con);
+                Console.WriteLine("-------------------");
+            }
+        }
+        public void PrintContact(Contact contact)
+        {
+            Console.WriteLine($"ID: {contact.Id}");
+            Console.WriteLine($"Naam: {contact.Name}");
+            Console.WriteLine($"Email: {contact.Email}");
+            Console.WriteLine($"Phone: {contact.Phone}");
+        }
+        public void Delete(int id)
+        {
+            
+            if (repository.GetById(id) != null)
+            {
+                var existing = repository.GetById(id);
+                Console.WriteLine("Do you want delete contact");
+                PrintContact(existing);
+                Console.WriteLine("Y/N:");
+                string yofn = Console.ReadLine();
+                if(yofn == "Y" || yofn == "y")
+                {
+                    repository.Delete(existing);
+                    Console.WriteLine("Contact was deleted.");
+                }
+                else
+                {
+                    Console.WriteLine("No division was selected.");
+                }
+                
+            }
+            else
+            {
+                Console.WriteLine($"Contact met Id={id}  niet gevonden");
+            }
+            
+
+        }
     }
 
     public class Menu(IConsole console, ContactService service)
@@ -222,6 +336,9 @@ namespace ContactManager.Core
         {
             console.WriteLine("1. Contact Toevoegen");
             console.WriteLine("2. Contacten Tonen");
+            console.WriteLine("3. Contact Update");
+            console.WriteLine("4. Contact Delete");
+            console.WriteLine("5. Contact Zoeken-op-naam");
             console.WriteLine("q. Exit");
             console.Write("Maak uw keuze:");
         }
@@ -232,10 +349,47 @@ namespace ContactManager.Core
             {
                 case "1": HandleAddContact(); break;
                 case "2": HandleShowContacts(); break;
+                case "3": HandleUpdateContact(); break;
+                case "4": HandleDeleteContact(); break;
+                case "5": HandleZoekenOpNaamContact(); break;
                 case "q": return false;
-                default: console.WriteLine("Ongeldige optie."); break;
+                default: console.WriteLine("geen optie"); break;
             }
             return true;
+        }
+        private void HandleZoekenOpNaamContact()
+        {
+            console.Write("Enter de Naam van contact: ");
+            string contNaam = console.ReadLine();
+            service.ZoekenOpNaam(contNaam);
+        }
+        private void HandleDeleteContact()
+        {
+            console.Write("Enter de ID van contact: ");
+            var ids = console.ReadLine();
+            int idn = int.Parse(ids);
+            service.Delete(idn);
+        }
+        private void HandleUpdateContact()
+        {
+            Contact conUp = new Contact();
+            console.Write("Enter de ID van contact: ");
+            var ids = console.ReadLine();
+            int idn = int.Parse(ids);
+            conUp.Id = idn;
+            console.Write("Enter de nieuwe naam: ");
+            var name = console.ReadLine();
+            conUp.Name = name;
+            console.Write("Enter de nieuwe phone: ");
+            var phone = console.ReadLine();
+            conUp.Phone = phone;   
+            console.Write("Enter de nieuwe email: ");
+            var email = console.ReadLine();
+            conUp.Email = email;
+            // Contact conUp = new Contact(idn, name, phone, email);
+
+            service.Update(conUp);
+
         }
         private void HandleAddContact()
         {
@@ -249,7 +403,8 @@ namespace ContactManager.Core
             var email = console.ReadLine();
 
             service.AddContact(name, phone, email);
-            console.WriteLine($"Contact +added+: {name}");
+
+            console.WriteLine($"Contact toegevoegd: {name}");
 
         }
         private void HandleShowContacts()
@@ -269,7 +424,7 @@ namespace ContactManager.Core
                 }
                 
             }
-            else console.WriteLine("Geen contacten gevonden.");
+            else console.WriteLine("Geen contacten");
 
         }
 
