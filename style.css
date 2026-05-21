@@ -6,8 +6,8 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
-    color: #222;
+    background-color: gray;
+    color: darkslategray;
 }
 
 
@@ -17,11 +17,11 @@ body {
     align-items: center;
     padding: 20px 40px;
     background-color: white;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid lightgray;
 }
 
     .topbar h1 {
-        color: #2563eb;
+        color: blue;
     }
 
 .search-box {
@@ -32,7 +32,7 @@ body {
     .search-box input {
         padding: 10px;
         width: 250px;
-        border: 1px solid #ccc;
+        border: 1px solid gray;
         border-radius: 8px;
     }
 
@@ -46,10 +46,11 @@ button {
 
     button:hover {
         opacity: 0.9;
+        font-weight: bold;
     }
 
 .add-btn {
-    background-color: #2563eb;
+    background-color: blue;
     color: white;
 }
 
@@ -82,7 +83,7 @@ button {
 
         .sidebar li:hover,
         .sidebar .active {
-            background-color: #2563eb;
+            background-color: blue;
             color: white;
         }
 
@@ -104,7 +105,7 @@ table {
 }
 
 th {
-    background-color: #f1f5f9;
+    background-color: lightgray;
     padding: 14px;
     text-align: left;
 }
@@ -113,16 +114,24 @@ td {
     padding: 14px;
     border-bottom: 1px solid #eee;
 }
-
-.blue-button {
-    background-color: #2563eb;
+.blue-button,
+.red-button {
+    padding: 6px 12px;
+    min-width: 75px;
     color: white;
-    margin-right: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+.blue-button {
+    background-color: blue;
 }
 
 .red-button {
-    background-color: #ef4444;
-    color: white;
+    background-color: red;
 }
 
 
@@ -131,6 +140,15 @@ td {
     background-color: white;
     border-radius: 12px;
     padding: 20px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.hidden {
+    max-width: 0;
+    padding: 0;
+    opacity: 0;
+    overflow: hidden;
 }
 
 .card {
@@ -176,3 +194,38 @@ td {
             width: 100%;
         }
 }
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    margin-bottom: 20px;
+}
+
+
+.form-group {
+    display: flex;
+    align-items: center; 
+}
+
+   
+    .form-group label {
+        width: 80px;
+        font-weight: bold;
+        margin-bottom: 0; 
+    }
+
+
+    .form-group input {
+        flex: 1; 
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        outline: none;
+    }
+
+    
+        .form-group input:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }

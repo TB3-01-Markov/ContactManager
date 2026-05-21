@@ -51,7 +51,7 @@ namespace ContactManager.Core
         public void AddContact(string name, string phone, string email)
         {
             var contact = new Contact {Name = name, Phone = phone, Email = email};
-
+           // if(repository.GetByName(contact.Name)
             repository.Add(contact);
         }
         public List<Contact> GetAllContacts()
@@ -94,6 +94,10 @@ namespace ContactManager.Core
         public Contact? existed (int id)
         {
             return repository.GetById(id);
+        }
+        public int IsContactNaam(string name)
+        {
+            return ZoekenOpNaam(name).Count;
         }
         public bool Delete(Contact contact)
         {

@@ -50,15 +50,19 @@
             service.SaveContacts();
             console.WriteLine("Contacten saved");
         }
-        private void HandleZoekenOpNaamContact()
+        private void ShowOpNaamContact(string contNaam)
         {
-            console.Write("Enter de Naam van contact: ");
-            string contNaam = console.ReadLine();
             List<Contact> ConOpNamen = service.ZoekenOpNaam(contNaam);
             foreach (var contact in ConOpNamen)
             {
                 PrintContact(contact);
             }
+        }
+        private void HandleZoekenOpNaamContact()
+        {
+            console.Write("Enter de Naam van contact: ");
+            string contNaam = console.ReadLine();
+            ShowOpNaamContact(contNaam);
         }
      
         
@@ -111,35 +115,38 @@
             console.WriteLine($"Phone: {contact.Phone}");
             console.WriteLine("-------------------");
         }
-        private void HandleUpdateContact()
+        private void UpdateContact(int idn)
         {
-
             Contact conUp = new Contact();
-            console.Write("Enter de ID van contact: ");
-            var ids = console.ReadLine();
-            int idn = int.Parse(ids);
             conUp.Id = idn;
 
             console.Write("Enter de nieuwe naam: ");
             var name = console.ReadLine();
             conUp.Name = name;
- 
+
             console.Write("Enter de nieuwe phone: ");
             var phone = console.ReadLine();
-            conUp.Phone = phone;   
+            conUp.Phone = phone;
             console.Write("Enter de nieuwe email: ");
             var email = console.ReadLine();
             conUp.Email = email;
 
             bool isUpdate = service.Update(conUp);
-            if(isUpdate == true) {
+            if (isUpdate == true)
+            {
                 console.WriteLine("Contact was updated.");
             }
             else
             {
-                console.WriteLine($"Contact met Id={ids}  niet gevonden");
+                console.WriteLine($"Contact met Id={idn}  niet gevonden");
             }
-
+        }
+        private void HandleUpdateContact()
+        {
+            console.Write("Enter de ID van contact: ");
+            var ids = console.ReadLine();
+            int idn = int.Parse(ids);
+            UpdateContact(idn);
         }
         private void HandleAddContact()
         {
@@ -151,9 +158,36 @@
 
             console.Write("Enter email: ");
             var email = console.ReadLine();
+            int iscm = service.IsContactNaam(name);
+            if (iscm>0)
+            {
+                console.WriteLine($"Er bestaat al een contactpersoon met de naam [{name}].");
+                ShowOpNaamContact(name);
+                console.WriteLine("Als u nog een contactpersoon met dezelfde naam wilt toevoegen, drukt u op -Y.");
+                console.WriteLine("Als u een bestaande contactpersoon wilt toevoegen of bijwerken, drukt u op -U.");
+                console.WriteLine("Als u het toevoegen van de contactpersoon wilt annuleren en terug wilt keren naar het hoofdmenu, drukt u Enter.");
+                var keizen = console.ReadLine();
+                if (keizen == "y" || keizen == "Y")
+                {
+                    service.AddContact(name, phone, email);
+                    console.WriteLine($"Contact toegevoegd: {name}");
+                }
+                if (keizen == "u" || keizen == "U") {
+                    if (iscm == 1)
+                    {
+                        UpdateContact(service.ZoekenOpNaam(name).First().Id);
+                    }
+                    else HandleUpdateContact();
+                
+                }
+                else
+                {
+                    console.WriteLine("return naar hoofdmenu");
+                    return;
+                }
+            }
 
             service.AddContact(name, phone, email);
-
             console.WriteLine($"Contact toegevoegd: {name}");
 
         }

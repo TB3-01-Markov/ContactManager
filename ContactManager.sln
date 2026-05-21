@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.6.11806.211 stable
+VisualStudioVersion = 18.6.11806.211
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Core", "ContactManager.Core\ContactManager.Core.csproj", "{0F6DA52E-B216-4322-AC6A-2E451F8179F8}"
 EndProject
@@ -19,6 +19,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Public", "Public", "{89789584-2061-4580-AC1B-97BD604247F2}"
 	ProjectSection(SolutionItems) = preProject
 		index.html = index.html
+		indexScript1.js = indexScript1.js
 		style.css = style.css
 	EndProjectSection
 EndProject
