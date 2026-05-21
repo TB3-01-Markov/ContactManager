@@ -9,12 +9,19 @@ namespace ContactManager.Core
             private List<Contact> contactenList = new List<Contact>();
             private int nextId = 1;
 
-            private static string path = "data/contacts.txt";
+        //static string projectRoot = Directory.GetParent(baseDir)?.Parent?.Parent?.FullName;
+        // private static string path = "data/contacts.txt";
+       // private static string path = Path.Combine(AppContext.BaseDirectory, "data/contacts.txt");
+        //Path.GetFullPath(Path.Combine(baseDir, @"..\..\..\data\contacts.txt"));
+        // Поднимаемся на 3 уровня вверх: из bin/Debug/net8.0 в корень
+        private static string path = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "data", "contacts.txt"));
 
-            public FileContactRepository()
+
+
+        public FileContactRepository()
             {
                 EnsurePathExists();
-                LoadFromFile();
+                LoadContacten();
             }
 
             private void EnsurePathExists()
@@ -25,7 +32,7 @@ namespace ContactManager.Core
                 }
             }
 
-            private void LoadFromFile()
+            private void LoadContacten()
             {
                 if (!File.Exists(path))
                     return;
@@ -48,7 +55,7 @@ namespace ContactManager.Core
                 }
             }
 
-            private void SaveToFile()
+            private void SaveContacten()
             {
                 string[] lines = new string[contactenList.Count];
 
@@ -69,9 +76,7 @@ namespace ContactManager.Core
             {
                 string[] parts = s.Split("<&>");
 
-                if (parts.Length < 4)
-                    return null;
-
+                
                 return new Contact
                 {
                     Id = int.Parse(parts[0]),
@@ -85,13 +90,13 @@ namespace ContactManager.Core
             {
                 contact.Id = nextId++;
                 contactenList.Add(contact);
-                SaveToFile();
+                SaveContacten();
             }
 
             public void Delete(Contact contact)
             {
                 contactenList.Remove(contact);
-                SaveToFile();
+                SaveContacten();
             }
 
             public void Update(Contact contact)
@@ -102,7 +107,7 @@ namespace ContactManager.Core
                 existing.Email = contact.Email;
                 existing.Phone = contact.Phone;
 
-                SaveToFile();
+                SaveContacten();
             }
 
             public IReadOnlyList<Contact> GetAll()

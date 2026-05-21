@@ -29,4 +29,8 @@ namespace ContactManager.Core
         }
     }
     */
+
+    public class testenan { 
+    
+    }
 }

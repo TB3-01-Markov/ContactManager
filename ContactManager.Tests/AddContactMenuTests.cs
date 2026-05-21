@@ -18,20 +18,16 @@ public class AddContactMenuTests
     [Fact]
     public void Menu_AddContact_Flow()
     {
-        console.Input.Enqueue("1");     // pick option
-        console.Input.Enqueue("Elvis"); // input name
-        console.Input.Enqueue("q");     // exit the loop.
+        console.Input.Enqueue("1");    
+        console.Input.Enqueue("Elvis"); 
+        console.Input.Enqueue("q");    
         menu.Run();
         List<string> expected =
-            // Initieel menu
             [ "1. Contact Toevoegen"
             , "q. Exit"
             , "Maak uw keuze:"
-            // Na keuze '1'
-            , "Voer een naam in: "  
-            // Na toevoegen          
+            , "Voer een naam in: "        
             , "Contact toegevoegd: Elvis"     
-            // Turtles all the way down
             , "1. Contact Toevoegen"
             , "q. Exit"
             , "Maak uw keuze:"

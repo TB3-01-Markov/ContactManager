@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContactManager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <h1> ContactManager</h1>
+
+        <div class="search-box">
+            <input type="text" placeholder="Search contacts by naam">
+            <button>Search</button>
+        </div>
+
+        <button class="add-btn">+ Add/Tonnen Contact</button>
+    </header>
+
+    <main class="container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li class="active">Contacts</li>
+                <li>Download</li>
+                <li>Upload </li>
+            </ul>
+        </aside>
+
+        <section class="contact-list">
+
+            <div class="section-header">
+                <h2>Contacts</h2>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Mark Meyers</td>
+                        <td>+32 473 31 32 66</td>
+                        <td>markmeyers@gmail.com</td>
+                        <td>
+                            <button class="blue-button">UPDATE</button>
+                            <button class="red-button">DELETE</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Lucas Gent</td>
+                        <td>+32 473 13 24 41</td>
+                        <td>lucasgent9000@gmail.com</td>
+                        <td>
+                            <button class="blue-button">UPDATE</button>
+                            <button class="red-button">DELETE</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>3</td>
+                        <td>Phillip Olimpiado</td>
+                        <td>+32 473 21 24 39</td>
+                        <td>philipvanbrugge1@gmail.com</td>
+                        <td>
+                            <button class="blue-button">UPDATE</button>
+                            <button class="red-button">DELETE</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
+        <section class="details">
+
+            <h2>Nieuwe Contact Tonnen</h2>
+
+            <div class="card">
+
+                <div class="avatar">
+                    
+                </div>
+
+                <h3>Tom Soyer Doe</h3>
+
+                <p><strong>Phone:</strong> +32 471 12 34 56</p>
+                <p><strong>Email:</strong> tomsoyer12@email.com</p>
+
+                <div class="card-buttons">
+                    <button class="blue-button">SAVE</button>
+                    <button class="red-button">CANCEL</button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

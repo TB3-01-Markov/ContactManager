@@ -1,4 +1,6 @@
-﻿namespace ContactManager.Core
+﻿using System.Xml.Linq;
+
+namespace ContactManager.Core
 {
     /*
     public class OrderApplicationService
@@ -24,13 +26,28 @@
     */
     public class ContactService
     {
+        /*
         private readonly InMemoryContactRepository repository;
 
         public ContactService(InMemoryContactRepository Mem)
         {
             repository = Mem;
         }
+        */
+        private readonly IContactRepository repository;
+  
+        public ContactService(IContactRepository repository)
+        {
+            this.repository = repository;
+        }
+        public void LoadContacts()
+        {
+           
+        }
+        public void SaveContacts()
+        {
 
+        }
         public void AddContact(string name, string phone, string email)
         {
             var contact = new Contact {Name = name, Phone = phone, Email = email};
@@ -41,60 +58,48 @@
         {
             return repository.GetAll().ToList();
         }
-        public void Update(Contact contact){
-            if (repository.GetById(contact.Id) != null)
-            { 
-                repository.Update(contact);
+        public bool Update(Contact changecontact){
+            Contact oudcontact = repository.GetById(changecontact.Id);
+            Contact upcontact = new Contact();
+            if (oudcontact != null)
+            {
+                upcontact.Id = changecontact.Id;
+
+                if (!string.IsNullOrWhiteSpace(changecontact.Name)) upcontact.Name = changecontact.Name;
+                else upcontact.Name = oudcontact.Name;
+
+                if (!string.IsNullOrWhiteSpace(changecontact.Phone)) upcontact.Phone = changecontact.Phone;
+                else upcontact.Phone= oudcontact.Phone;
+
+                if (!string.IsNullOrWhiteSpace(changecontact.Email)) upcontact.Email = changecontact.Email;
+                else upcontact.Email= oudcontact.Email;
+
+                repository.Update(upcontact);
+                return true;
             }
             else
             {
-                Console.WriteLine($"Contact met Id={contact.Id}  niet gevonden");
-            }
-            
-        }
-        public void ZoekenOpNaam(string naam)
-        {
-            List<Contact> ConOpNamen = repository.GetByName(naam);
-            foreach (var con in ConOpNamen)
-            {
-                PrintContact(con);
-                Console.WriteLine("-------------------");
-            }
-        }
-        public void PrintContact(Contact contact)
-        {
-            Console.WriteLine($"ID: {contact.Id}");
-            Console.WriteLine($"Naam: {contact.Name}");
-            Console.WriteLine($"Email: {contact.Email}");
-            Console.WriteLine($"Phone: {contact.Phone}");
-        }
-        public void Delete(int id)
-        {
-            
-            if (repository.GetById(id) != null)
-            {
-                var existing = repository.GetById(id);
-                Console.WriteLine("Do you want delete contact");
-                PrintContact(existing);
-                Console.WriteLine("Y/N:");
-                string yofn = Console.ReadLine();
-                if(yofn == "Y" || yofn == "y")
-                {
-                    repository.Delete(existing);
-                    Console.WriteLine("Contact was deleted.");
-                }
-                else
-                {
-                    Console.WriteLine("No division was selected.");
-                }
+                return false;
                 
             }
-            else
-            {
-                Console.WriteLine($"Contact met Id={id}  niet gevonden");
-            }
             
-
         }
+        public List<Contact> ZoekenOpNaam(string naam)
+        {
+            List<Contact> ConOpNamen = repository.GetByName(naam);
+            return ConOpNamen;
+            
+        }
+      
+        public Contact? existed (int id)
+        {
+            return repository.GetById(id);
+        }
+        public bool Delete(Contact contact)
+        {
+
+            repository.Delete(contact);
+            return true;
+        }             
     }
 }
