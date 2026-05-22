@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "DBN2MT9KmiE=",
+  "dgSpecHash": "YLWnlriesBw=",
   "success": true,
-  "projectFilePath": "C:\\mygit\\ContactManager\\ContactManager.CLI\\ContactManager.CLI.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Code\\CourseRepos\\Kostiantyn\\ContactManager\\ContactManager.CLI\\ContactManager.CLI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\kilfo\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.24\\microsoft.netcore.app.ref.8.0.24.nupkg.sha512",
+    "C:\\Users\\kilfo\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.24\\microsoft.windowsdesktop.app.ref.8.0.24.nupkg.sha512",
+    "C:\\Users\\kilfo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.24\\microsoft.aspnetcore.app.ref.8.0.24.nupkg.sha512",
+    "C:\\Users\\kilfo\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.24\\microsoft.netcore.app.host.win-x64.8.0.24.nupkg.sha512"
+  ],
   "logs": []
 }
