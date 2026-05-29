@@ -19,18 +19,31 @@ public class AddContactMenuTests
     public void Menu_AddContact_Flow()
     {
         console.Input.Enqueue("1");    
-        console.Input.Enqueue("Elvis"); 
+        console.Input.Enqueue("Elvis");
+        console.Input.Enqueue("+32 473 45 66 74");
+        console.Input.Enqueue("elvispresli@gmail.com");
         console.Input.Enqueue("q");    
         menu.Run();
         List<string> expected =
-            [ "1. Contact Toevoegen"
-            , "q. Exit"
-            , "Maak uw keuze:"
-            , "Voer een naam in: "        
-            , "Contact toegevoegd: Elvis"     
-            , "1. Contact Toevoegen"
-            , "q. Exit"
-            , "Maak uw keuze:"
+            [
+                "1. Contact Toevoegen",
+                "2. Contacten Tonen",
+                "3. Contact Update",
+                "4. Contact Delete",
+                "5. Contact Zoeken-op-Naam",
+                "q. Exit",
+                "Maak uw keuze:",
+                "Enter de naam: ",
+                "Enter phone: ",
+                "Enter email: ",
+                "Contact toegevoegd: Elvis",
+                "1. Contact Toevoegen",
+                "2. Contacten Tonen",
+                "3. Contact Update",
+                "4. Contact Delete",
+                "5. Contact Zoeken-op-Naam",
+                "q. Exit",
+                "Maak uw keuze:"
             ];
         Assert.Equal(expected, console.Output);
         var contact = repository.GetAll()[0];

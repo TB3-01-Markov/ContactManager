@@ -11,16 +11,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager.Tests", "Con
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{1B18781B-4342-4819-8464-325B2346D2D7}"
 	ProjectSection(SolutionItems) = preProject
-		contacts.txt = contacts.txt
+		data\contacts.txt = data\contacts.txt
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{D610F2EF-3D80-44AB-A917-F5E8C6C6C874}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{2B227296-77FA-46A8-99F3-829E5743525A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Public", "Public", "{89789584-2061-4580-AC1B-97BD604247F2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "public", "public", "{616E29DC-B8D7-4056-81A1-68EB048DAD07}"
 	ProjectSection(SolutionItems) = preProject
-		index.html = index.html
-		indexScript1.js = indexScript1.js
-		style.css = style.css
+		Frontend\public\index.html = Frontend\public\index.html
+		Frontend\public\style.css = Frontend\public\style.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3140BEB0-773C-4CD2-9B35-C5B9608334B7}"
+	ProjectSection(SolutionItems) = preProject
+		Frontend\src\file.js = Frontend\src\file.js
+		Frontend\src\main.js = Frontend\src\main.js
 	EndProjectSection
 EndProject
 Global
@@ -74,7 +79,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{89789584-2061-4580-AC1B-97BD604247F2} = {D610F2EF-3D80-44AB-A917-F5E8C6C6C874}
+		{616E29DC-B8D7-4056-81A1-68EB048DAD07} = {2B227296-77FA-46A8-99F3-829E5743525A}
+		{3140BEB0-773C-4CD2-9B35-C5B9608334B7} = {2B227296-77FA-46A8-99F3-829E5743525A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C85968C-56ED-463D-94F9-BD2F3214E420}

@@ -1,0 +1,12 @@
+{
+  "name": "contactmanager-frontend",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@vitest/ui": "^4.1.7",
+    "live-server": "^1.2.2"
+  },
+  "scripts": {
+    "start": "live-server .. --port=3000 --open=Frontend/public/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

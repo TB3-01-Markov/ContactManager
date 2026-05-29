@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net8.0": {
       "coverlet.collector/6.0.0": {
@@ -391,6 +391,31 @@
         },
         "runtime": {
           "lib/netstandard2.0/NuGet.Frameworks.dll": {}
+        }
+      },
+      "QuickPulse/0.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/QuickPulse.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/QuickPulse.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "QuickPulse.Show/0.1.16": {
+        "type": "package",
+        "dependencies": {
+          "QuickPulse": "0.4.0"
+        },
+        "compile": {
+          "lib/net8.0/QuickPulse.Show.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/QuickPulse.Show.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -2155,6 +2180,34 @@
         "lib/netstandard2.0/NuGet.Frameworks.dll",
         "nuget.frameworks.6.5.0.nupkg.sha512",
         "nuget.frameworks.nuspec"
+      ]
+    },
+    "QuickPulse/0.4.0": {
+      "sha512": "hbXdF/L0UPCFHO9g25l7LDItJid3fgHupNIfHAoWj6VWG8bBFSEWdzK+xwAAXbZLhLKs8r6b4lXLsBjgS8ktUw==",
+      "type": "package",
+      "path": "quickpulse/0.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/net8.0/QuickPulse.dll",
+        "lib/net8.0/QuickPulse.xml",
+        "quickpulse.0.4.0.nupkg.sha512",
+        "quickpulse.nuspec"
+      ]
+    },
+    "QuickPulse.Show/0.1.16": {
+      "sha512": "0gTozxSxxmJnjICTGchISA+vDXmpoOo/3a0v3gBFnefa5QHokJ1fxCXtx99pGbJsXXuiIG1XyHDCOZJeLTkhBw==",
+      "type": "package",
+      "path": "quickpulse.show/0.1.16",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net8.0/QuickPulse.Show.dll",
+        "quickpulse.show.0.1.16.nupkg.sha512",
+        "quickpulse.show.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -5518,38 +5571,48 @@
     "net8.0": [
       "ContactManager.Core >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.8.0",
+      "QuickPulse.Show >= 0.1.16",
       "coverlet.collector >= 6.0.0",
       "xunit >= 2.5.3",
       "xunit.runner.visualstudio >= 2.5.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kilfo\\.nuget\\packages\\": {}
+    "C:\\Users\\becode\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Code\\CourseRepos\\Kostiantyn\\ContactManager\\ContactManager.Tests\\ContactManager.Tests.csproj",
+      "projectUniqueName": "C:\\mygit\\ContactManager\\ContactManager.Tests\\ContactManager.Tests.csproj",
       "projectName": "ContactManager.Tests",
-      "projectPath": "C:\\Code\\CourseRepos\\Kostiantyn\\ContactManager\\ContactManager.Tests\\ContactManager.Tests.csproj",
-      "packagesPath": "C:\\Users\\kilfo\\.nuget\\packages\\",
-      "outputPath": "C:\\Code\\CourseRepos\\Kostiantyn\\ContactManager\\ContactManager.Tests\\obj\\",
+      "projectPath": "C:\\mygit\\ContactManager\\ContactManager.Tests\\ContactManager.Tests.csproj",
+      "packagesPath": "C:\\Users\\becode\\.nuget\\packages\\",
+      "outputPath": "C:\\mygit\\ContactManager\\ContactManager.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\kilfo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\becode\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
+          "framework": "net8.0",
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Code\\CourseRepos\\Kostiantyn\\ContactManager\\ContactManager.Core\\ContactManager.Core.csproj": {
-              "projectPath": "C:\\Code\\CourseRepos\\Kostiantyn\\ContactManager\\ContactManager.Core\\ContactManager.Core.csproj"
+            "C:\\mygit\\ContactManager\\ContactManager.Core\\ContactManager.Core.csproj": {
+              "projectPath": "C:\\mygit\\ContactManager\\ContactManager.Core\\ContactManager.Core.csproj"
             }
           }
         }
@@ -5564,15 +5627,20 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net8.0": {
+        "framework": "net8.0",
         "targetAlias": "net8.0",
         "dependencies": {
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
             "version": "[17.8.0, )"
+          },
+          "QuickPulse.Show": {
+            "target": "Package",
+            "version": "[0.1.16, )"
           },
           "coverlet.collector": {
             "target": "Package",
@@ -5598,26 +5666,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.24, 8.0.24]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.24, 8.0.24]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.24, 8.0.24]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

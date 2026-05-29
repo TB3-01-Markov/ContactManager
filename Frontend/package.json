@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/TB3-01-Markov/ContactManager#readme",
   "devDependencies": {
-    "@vitest/ui": "^4.1.7"
+    "@vitest/ui": "^4.1.7",
+    "live-server": "^1.2.2"
   }
 }
