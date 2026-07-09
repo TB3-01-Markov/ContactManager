@@ -20,7 +20,7 @@ public class AddContactMenuTests
     {
         console.Input.Enqueue("1");    
         console.Input.Enqueue("Elvis");
-        console.Input.Enqueue("+32 473 45 66 74");
+;;        console.Input.Enqueue("+32 473 45 66 74");
         console.Input.Enqueue("elvispresli@gmail.com");
         console.Input.Enqueue("q");    
         menu.Run();

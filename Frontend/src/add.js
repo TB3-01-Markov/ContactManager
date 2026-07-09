@@ -1,3 +1,4 @@
+const contactSection = document.getElementById("contactadd-section");
 const toggleBtn = document.getElementById("contactaddbar-btn");
 toggleBtn.addEventListener("click", () => contactSection.classList.toggle("hidden"));
 

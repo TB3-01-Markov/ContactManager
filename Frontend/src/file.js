@@ -7,27 +7,13 @@ async function loadTextFile() {
             throw new Error(`FOUT loadTextFile#1: ${response.status}`);
         }
         const textData = await response.text();
-
         const lines = textData.split("\n").filter(line => line.trim() !== "");
-       // contactsList = lines.map(line => stringToContact(line.trim()));
-        //ContactList = lines.map(line => stringToContactClass(line.trim()));
         contactsList = lines.map(line => stringToContactClass(line.trim()));
         renderContacts();
         
     } catch (error) {
         alert("FOUT loadTextFile#2: " + error.message);
-
     }
-}
-
-function stringToContact(s) {
-    const parts = s.split("<&>");
-    return {
-        id: parseInt(parts[0]),
-        name: parts[1],
-        email: parts[2],
-        phone: parts[3]
-    };
 }
 
 function stringToContactClass(s) {

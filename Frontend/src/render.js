@@ -1,4 +1,5 @@
 
+const tbody = document.getElementById("tbodycontacten");
 function renderContacts() {
     tbody.innerHTML = "";
     contactsList.forEach(contact => {

@@ -19,13 +19,24 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "public", "public", "{616E29DC-B8D7-4056-81A1-68EB048DAD07}"
 	ProjectSection(SolutionItems) = preProject
 		Frontend\public\index.html = Frontend\public\index.html
+		Frontend\public\oudSections.html = Frontend\public\oudSections.html
 		Frontend\public\style.css = Frontend\public\style.css
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3140BEB0-773C-4CD2-9B35-C5B9608334B7}"
 	ProjectSection(SolutionItems) = preProject
+		Frontend\src\add.js = Frontend\src\add.js
+		button.js = button.js
+		Frontend\src\contact.js = Frontend\src\contact.js
+		Frontend\src\delete.js = Frontend\src\delete.js
 		Frontend\src\file.js = Frontend\src\file.js
 		Frontend\src\main.js = Frontend\src\main.js
+		Frontend\src\note.js = Frontend\src\note.js
+		Frontend\src\popup.js = Frontend\src\popup.js
+		Frontend\src\render.js = Frontend\src\render.js
+		repository.js = repository.js
+		Frontend\src\storagelist.js = Frontend\src\storagelist.js
+		Frontend\src\update.js = Frontend\src\update.js
 	EndProjectSection
 EndProject
 Global

@@ -40,7 +40,13 @@
 //подумать о том что бі написать класс в стораджелист и добавить в него функции
 // изменить тему студии в норму
 
-
+    /*
+document.querySelector('#tbodycontacten').addEventListener('click', function (e) {
+if (e.target.classList.contains('update-btn')) 
+и/или
+const saveBtn = document.getElementById("addsave-btn");
+saveBtn.addEventListener("click", () => {
+    */
 
 /*let contacts = [
     { id: 1, name: "Mark Meyers", phone: "+32 473 31 32 66", email: "markmeyers@gmail.com" },
@@ -97,3 +103,14 @@ document.querySelector('#tbodycontacten').addEventListener('click', function (e)
 });
 */
 
+/*
+function stringToContact(s) {
+    const parts = s.split("<&>");
+    return {
+        id: parseInt(parts[0]),
+        name: parts[1],
+        email: parts[2],
+        phone: parts[3]
+    };
+}
+*/
